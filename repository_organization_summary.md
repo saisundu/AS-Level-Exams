@@ -2,7 +2,7 @@
 
 ## Repository Status Overview
 **Date**: November 2025  
-**Total Subjects**: 3 (Pure Mathematics 9709, Probability & Statistics 9709, Business 9609)  
+**Total Subjects**: 4 (Pure Mathematics 9709, Probability & Statistics 9709, Business 9609, Economics 9708)  
 **Organization Status**: ✅ FULLY ORGANIZED
 
 ---
@@ -56,7 +56,29 @@ subjects/probability-statistics-9709/
 **All Papers Fully Processed**:
 - ✅ All 15 Winter papers (2020-2024) with complete solutions and validation reports
 
-### 3. Business 9609 ⭐ **NEWLY EXPANDED**
+### 3. Economics 9708 ⭐ **NEWLY ADDED**
+**Status**: ✅ COMPLETE PAPER 2 COLLECTION
+- **Previous**: Not in repository
+- **Current**: 32 files (16 question papers + 16 mark schemes)
+- **Years Covered**: 2020-2025
+- **Sessions**: March, June, October
+- **Paper**: Paper 2 only (Data Response and Essay Questions)
+- **Success Rate**: 88.9% (32/36 target files)
+
+**Structure**:
+```
+subjects/economics-9708/
+├── 2020/ (Oct: 22 | Jun: 22 | Mar: 22)
+├── 2021/ (Oct: 22 | Jun: 22) [Mar: missing]
+├── 2022/ (Oct: 22 | Jun: 22 | Mar: 22)
+├── 2023/ (Oct: 22 | Jun: 22 | Mar: 22)
+├── 2024/ (Oct: 22 | Jun: 22 | Mar: 22)
+└── 2025/ (Jun: 22 | Mar: 22) [Oct papers not yet available]
+```
+
+**Note**: 4 failed downloads (2021 March + 2025 October papers not yet released) - Perfect pairing maintained
+
+### 4. Business 9609 ⭐ **NEWLY EXPANDED**
 **Status**: ✅ COMPLETE COLLECTION WITH MARK SCHEMES
 - **Previous**: 1 paper (March 2020)
 - **Current**: 154 files (77 question papers + 77 mark schemes)
@@ -121,8 +143,9 @@ subjects/business-9609/
 |---------|------------------|------------------|-----------------|--------------|
 | Pure Mathematics 9709 | 35 + 32 MS | 4 | 11.4% | 85.25% |
 | Probability & Statistics 9709 | 15 + 15 MS | 15 | 100% | 95%+ |
+| Economics 9708 | 16 + 16 MS | 0 | 0% | N/A |
 | Business 9609 | 77 + 77 MS | 1 | 1.3% | N/A |
-| **TOTAL** | **221 files** | **20** | **9.0%** | **90%+** |
+| **TOTAL** | **253 files** | **20** | **7.9%** | **90%+** |
 
 ---
 
@@ -153,7 +176,8 @@ subjects/business-9609/
 ### 📈 **Immediate Priorities**
 1. **Complete Pure Mathematics Processing**: 31 remaining papers
 2. **Begin Business 9609 Processing**: 69 papers ready for solutions
-3. **Add Summer/March Statistics Papers**: Expand P&S collection
+3. **Begin Economics 9708 Processing**: 16 papers ready for solutions
+4. **Add Summer/March Statistics Papers**: Expand P&S collection
 
 ### 📈 **Long-term Goals**
 1. **Additional Subjects**: Physics, Chemistry, Economics
@@ -184,6 +208,9 @@ subjects/business-9609/
 ### 📊 **Collection Completeness**
 - **Pure Mathematics**: 100% of available papers + mark schemes collected
 - **Probability & Statistics**: 100% of Winter papers + mark schemes collected
+- **Economics**: 88.9% of target papers + mark schemes collected (32/36 files)
+  - 2020, 2022-2024: Complete collection
+  - 2021: March missing, 2025: October not yet released
 - **Business**: 95.1% of target papers + mark schemes collected (154/162 files)
   - 2020-2024: Complete collection
   - 2025: June & March available, October not yet released
