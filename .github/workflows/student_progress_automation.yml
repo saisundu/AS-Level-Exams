@@ -1,0 +1,171 @@
+name: Student Progress Automation
+
+on:
+  issues:
+    types: [opened, edited, closed]
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: '0 9 * * *'  # Daily at 9 AM UTC
+
+jobs:
+  track_student_progress:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'practice-session')
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Extract student and paper info
+      id: extract_info
+      run: |
+        # Extract student name from issue title
+        STUDENT=$(echo "${{ github.event.issue.title }}" | sed -n 's/\[STUDENT\] \([^]]*\).*/\1/p')
+        
+        # Extract subject from issue title
+        SUBJECT=$(echo "${{ github.event.issue.title }}" | sed -n 's/.*\[SUBJECT\] \([^]]*\).*/\1/p')
+        
+        # Extract paper from issue title
+        PAPER=$(echo "${{ github.event.issue.title }}" | sed -n 's/.*\[PAPER\] \([^]]*\).*/\1/p')
+        
+        echo "student=$STUDENT" >> $GITHUB_OUTPUT
+        echo "subject=$SUBJECT" >> $GITHUB_OUTPUT
+        echo "paper=$PAPER" >> $GITHUB_OUTPUT
+        
+    - name: Update student progress file
+      if: github.event.action == 'closed'
+      run: |
+        # Create or update student progress file
+        STUDENT="${{ steps.extract_info.outputs.student }}"
+        SUBJECT="${{ steps.extract_info.outputs.subject }}"
+        PAPER="${{ steps.extract_info.outputs.paper }}"
+        
+        # Create student progress directory if it doesn't exist
+        mkdir -p "student_progress/$STUDENT"
+        
+        # Extract score from issue body
+        SCORE=$(echo "${{ github.event.issue.body }}" | grep -o "Score Achieved: [0-9]*/[0-9]*" | head -1)
+        PERCENTAGE=$(echo "${{ github.event.issue.body }}" | grep -o "Percentage: [0-9]*%" | head -1)
+        DATE=$(date +"%Y-%m-%d")
+        
+        # Append to student's progress log
+        echo "$DATE,$SUBJECT,$PAPER,$SCORE,$PERCENTAGE" >> "student_progress/$STUDENT/practice_log.csv"
+        
+        # Create header if file is new
+        if [ ! -s "student_progress/$STUDENT/practice_log.csv" ]; then
+          sed -i '1i Date,Subject,Paper,Score,Percentage' "student_progress/$STUDENT/practice_log.csv"
+        fi
+        
+    - name: Generate progress report
+      if: github.event.action == 'closed'
+      run: |
+        STUDENT="${{ steps.extract_info.outputs.student }}"
+        
+        # Generate basic progress report
+        cat > "student_progress/$STUDENT/progress_summary.md" << EOF
+        # Progress Summary for $STUDENT
+        
+        **Last Updated**: $(date +"%Y-%m-%d %H:%M:%S")
+        
+        ## Recent Practice Sessions
+        $(tail -5 "student_progress/$STUDENT/practice_log.csv" | column -t -s,)
+        
+        ## Statistics
+        - **Total Sessions**: $(wc -l < "student_progress/$STUDENT/practice_log.csv")
+        - **Latest Score**: $(tail -1 "student_progress/$STUDENT/practice_log.csv" | cut -d, -f4-5)
+        
+        EOF
+        
+    - name: Commit progress updates
+      if: github.event.action == 'closed'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add student_progress/
+        git commit -m "Update progress for ${{ steps.extract_info.outputs.student }}" || exit 0
+        git push
+
+  assign_practice_papers:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened' && contains(github.event.issue.labels.*.name, 'practice-session')
+    
+    steps:
+    - name: Auto-assign to project board
+      uses: actions/github-script@v7
+      with:
+        script: |
+          // Move new practice sessions to "Assigned Practice" column
+          const issue = context.payload.issue;
+          
+          // Add to project board (you'll need to configure project ID)
+          // This is a placeholder - actual implementation depends on your project setup
+          console.log(`New practice session created: ${issue.title}`);
+          
+          // Add appropriate labels based on content
+          const body = issue.body.toLowerCase();
+          const labels = [];
+          
+          // Auto-detect difficulty level
+          if (body.includes('beginner')) labels.push('beginner');
+          else if (body.includes('advanced')) labels.push('advanced');
+          else labels.push('intermediate');
+          
+          // Auto-detect subject
+          if (body.includes('9609')) labels.push('business-9609');
+          else if (body.includes('9708')) labels.push('economics-9708');
+          else if (body.includes('9709') && body.includes('statistics')) labels.push('probability-statistics-9709');
+          else if (body.includes('9709')) labels.push('pure-mathematics-9709');
+          
+          // Add labels
+          if (labels.length > 0) {
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: labels
+            });
+          }
+
+  send_reminders:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    
+    steps:
+    - name: Check overdue practice sessions
+      uses: actions/github-script@v7
+      with:
+        script: |
+          // Find overdue practice sessions
+          const { data: issues } = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: 'practice-session',
+            state: 'open'
+          });
+          
+          const now = new Date();
+          const overdueIssues = issues.filter(issue => {
+            const body = issue.body;
+            const dueDateMatch = body.match(/Target Completion.*?(\d{4}-\d{2}-\d{2})/);
+            if (dueDateMatch) {
+              const dueDate = new Date(dueDateMatch[1]);
+              return dueDate < now;
+            }
+            return false;
+          });
+          
+          // Comment on overdue issues
+          for (const issue of overdueIssues) {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: '⚠️ **Reminder**: This practice session is overdue. Please complete it as soon as possible and update your progress.'
+            });
+          }
