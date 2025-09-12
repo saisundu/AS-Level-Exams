@@ -13,7 +13,7 @@ Located in: `sai_practice_issues/Probability-Statistics-9709/completed/`
 - `issue_2024_Jun_53.md` - [Prob-Stat-9709][s24/53]
 - `issue_2025_Jun_53.md` - [Prob-Stat-9709][s25/53]
 
-### In Progress Issues: 12 files (30.8%)
+### In Progress Issues: 13 files (33.3%)
 Located in: `sai_practice_issues/Probability-Statistics-9709/in-progress/`
 
 **Recent/Advanced Papers:**
@@ -26,23 +26,24 @@ Located in: `sai_practice_issues/Probability-Statistics-9709/in-progress/`
 **Intermediate Papers:**
 - `issue_2022_Oct_51.md` - [Prob-Stat-9709][w22/51]
 - `issue_2022_Oct_52.md` - [Prob-Stat-9709][w22/52]
+- `issue_2022_Mar_52.md` - [Prob-Stat-9709][m22/52] ⭐ NEW!
 - `issue_2021_Jun_53.md` - [Prob-Stat-9709][s21/53]
 - `issue_2021_Oct_53.md` - [Prob-Stat-9709][w21/53]
 
-**Foundation Papers (NEW!):**
+**Foundation Papers:**
 - `issue_2020_Mar_52.md` - [Prob-Stat-9709][m20/52]
 - `issue_2020_Oct_51.md` - [Prob-Stat-9709][w20/51]
 - `issue_2020_Oct_52.md` - [Prob-Stat-9709][w20/52]
 
-### To-Do Issues: 23 files (59.0%)
+### To-Do Issues: 22 files (56.4%)
 Located in: `sai_practice_issues/Probability-Statistics-9709/to-do/`
 
 **Foundation Papers Remaining (4 files):**
 - `issue_2020_Jun_51.md`, `issue_2020_Jun_52.md`, `issue_2020_Jun_53.md`, `issue_2020_Oct_53.md`
 
-**Intermediate Papers (8 files):**
+**Intermediate Papers (7 files):**
 - 5 from 2021: `issue_2021_Jun_51.md`, `issue_2021_Jun_52.md`, `issue_2021_Mar_52.md`, `issue_2021_Oct_51.md`, `issue_2021_Oct_52.md`
-- 3 from 2022: `issue_2022_Jun_52.md`, `issue_2022_Jun_53.md`, `issue_2022_Mar_52.md`
+- 2 from 2022: `issue_2022_Jun_52.md`, `issue_2022_Jun_53.md`
 
 **Advanced Papers (11 files):**
 - 7 from 2023: All papers (Jun 51/52/53, Mar 52, Oct 51/52/53)
@@ -51,10 +52,10 @@ Located in: `sai_practice_issues/Probability-Statistics-9709/to-do/`
 
 ## Updated Progress Analysis
 
-### Overall Progress: 41.0% (16 out of 39 total issues)
+### Overall Progress: 43.6% (17 out of 39 total issues)
 - **Completed**: 10.3% (4 issues) ✅
-- **In Progress**: 30.8% (12 issues) 🔄
-- **Remaining**: 59.0% (23 issues) 📋
+- **In Progress**: 33.3% (13 issues) 🔄
+- **Remaining**: 56.4% (22 issues) 📋
 
 ### Major Improvement: Foundation Building Started! 🎉
 - **2020 Papers**: 3 out of 7 now in progress (43%)
@@ -87,7 +88,7 @@ Located in: `sai_practice_issues/Probability-Statistics-9709/to-do/`
 - **Strategic difficulty progression** from foundation to advanced
 
 ### 4. Active Engagement
-- **12 papers in progress** shows strong momentum
+- **13 papers in progress** shows strong momentum
 - **Range across 6 years** provides comprehensive practice
 - **Mix of all difficulty levels** ensures well-rounded preparation
 
@@ -100,13 +101,13 @@ sai_practice_issues/Probability-Statistics-9709/
 │   ├── issue_2022_Oct_53.md
 │   ├── issue_2024_Jun_53.md
 │   └── issue_2025_Jun_53.md
-├── in-progress/              # 12 issues (30.8%) 🔄
+├── in-progress/              # 13 issues (33.3%) 🔄
 │   ├── Foundation (2020): 3 papers
-│   ├── Intermediate (2021-2022): 4 papers  
+│   ├── Intermediate (2021-2022): 5 papers  
 │   └── Advanced (2024-2025): 5 papers
-└── to-do/                    # 23 issues (59.0%) 📋
+└── to-do/                    # 22 issues (56.4%) 📋
     ├── Foundation remaining: 4 papers
-    ├── Intermediate remaining: 8 papers
+    ├── Intermediate remaining: 7 papers
     └── Advanced remaining: 11 papers
 ```
 
@@ -151,9 +152,9 @@ All 39 Probability & Statistics practice issues are now correctly organized acco
 ## Summary: Outstanding Progress!
 
 Sai has made **significant improvements** in the Probability & Statistics practice:
-- **41% overall engagement** (16 out of 39 papers)
+- **43.6% overall engagement** (17 out of 39 papers) ⬆️ UPDATED!
 - **Foundation building initiated** (critical for long-term success)
 - **Balanced approach** across all paper types and difficulty levels
-- **Strong momentum** with 12 papers actively in progress
+- **Strong momentum** with 13 papers actively in progress ⬆️ UPDATED!
 
 The repository organization now perfectly reflects this excellent progress and provides a clear roadmap for completing the remaining practice sessions.
